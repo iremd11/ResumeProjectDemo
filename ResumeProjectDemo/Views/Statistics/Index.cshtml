@@ -1,0 +1,117 @@
+@using ResumeProjectDemo.Entities
+@{
+    ViewData["Title"] = "Gösterge Paneli";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var sonMesajlar = ViewBag.SonMesajlar as List<Message>;
+    var sonProjeler = ViewBag.SonProjeler as List<Portfolio>;
+}
+
+<div class="p-6 space-y-6">
+    <div>
+        <h1 class="text-2xl font-bold text-slate-800 dark:text-white">Gösterge Paneli</h1>
+        <p class="text-slate-600 dark:text-slate-300 mt-2">Portfolio projenize ait özet bilgiler.</p>
+    </div>
+
+    <!-- Özet Kartları -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Projeler</p>
+            <p class="text-2xl font-extrabold mt-2 text-primary">@ViewBag.ToplamProje</p>
+        </div>
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Kategoriler</p>
+            <p class="text-2xl font-extrabold mt-2 text-slate-800 dark:text-white">@ViewBag.ToplamKategori</p>
+        </div>
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Yetenekler</p>
+            <p class="text-2xl font-extrabold mt-2 text-emerald-500">@ViewBag.ToplamYetenek</p>
+        </div>
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Hizmetler</p>
+            <p class="text-2xl font-extrabold mt-2 text-amber-500">@ViewBag.ToplamHizmet</p>
+        </div>
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Referanslar</p>
+            <p class="text-2xl font-extrabold mt-2 text-violet-500">@ViewBag.ToplamReferans</p>
+        </div>
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-5">
+            <p class="text-sm text-slate-500 dark:text-[#9db2b9]">Mesajlar</p>
+            <p class="text-2xl font-extrabold mt-2">
+                <span class="text-primary">@ViewBag.ToplamMesaj</span>
+                <span class="text-xs font-normal text-red-500 ml-1">(@ViewBag.OkunmamisMesaj okunmadı)</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Son Mesajlar -->
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-6">
+            <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">mail</span>
+                Son Mesajlar
+            </h2>
+            @if (sonMesajlar != null && sonMesajlar.Any())
+            {
+                <div class="space-y-3">
+                    @foreach (var m in sonMesajlar)
+                    {
+                        <div class="flex justify-between items-start p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+                            <div>
+                                <p class="font-medium text-slate-800 dark:text-white">@m.NameSurname</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 truncate max-w-[200px]">@m.Subject</p>
+                                <p class="text-xs text-slate-400 dark:text-slate-500">@m.SendDate.ToString("dd.MM.yyyy HH:mm")</p>
+                            </div>
+                            @if (!m.IsRead)
+                            {
+                                <span class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">Yeni</span>
+                            }
+                        </div>
+                    }
+                </div>
+                <a href="@Url.Action("Index", "Message")" class="inline-block mt-4 text-primary hover:underline text-sm">Tümünü Gör →</a>
+            }
+            else
+            {
+                <p class="text-slate-500 dark:text-slate-400">Henüz mesaj yok.</p>
+            }
+        </div>
+
+        <!-- Son Projeler / Timeline -->
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-6">
+            <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">folder</span>
+                Son Projeler
+            </h2>
+            @if (sonProjeler != null && sonProjeler.Any())
+            {
+                <div class="space-y-3">
+                    @foreach (var p in sonProjeler)
+                    {
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+                            @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                            {
+                                <img src="@p.ImageUrl" alt="" class="w-12 h-12 rounded-lg object-cover" />
+                            }
+                            else
+                            {
+                                <div class="w-12 h-12 rounded-lg bg-slate-300 dark:bg-slate-700 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-slate-500">image</span>
+                                </div>
+                            }
+                            <div class="flex-1 min-w-0">
+                                <p class="font-medium text-slate-800 dark:text-white truncate">@p.Title</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">@(p.Category?.CategoryName ?? "-")</p>
+                            </div>
+                            <a href="@Url.Action("UpdatePortfolio", "Portfolio", new { id = p.PortfolioId })" class="text-primary text-sm hover:underline">Düzenle</a>
+                        </div>
+                    }
+                </div>
+                <a href="@Url.Action("PortfolioList", "Portfolio")" class="inline-block mt-4 text-primary hover:underline text-sm">Tümünü Gör →</a>
+            }
+            else
+            {
+                <p class="text-slate-500 dark:text-slate-400">Henüz proje yok.</p>
+            }
+        </div>
+    </div>
+</div>

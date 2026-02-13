@@ -1,0 +1,78 @@
+@using ResumeProjectDemo.Entities
+@model dynamic
+@{
+    var about = Model?.About as About;
+    var contact = Model?.Contact as Contact;
+}
+
+<section id="about" class="section">
+    <div class="container">
+        @if (about != null)
+        {
+            <div class="section-title h2 text-center mb-8">
+                <h2 class="mb-0">@(about.Title ?? "Hakkımda")</h2>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 col-lg-5 mb-5 mb-lg-0">
+                    <div class="about-img">
+                        <img src="@(string.IsNullOrWhiteSpace(about.ImageUrl) ? "/images/profile.jpg" : about.ImageUrl)" alt="Profil Resmi" class="img-fluid rounded shadow-lg" />
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-7">
+                    <div class="about-content">
+                        <p class="lead text-muted">@about.Description</p>
+
+                        <div class="row mt-4">
+                            <div class="col-sm-4"><strong class="text-uppercase text-primary">Ad Soyad:</strong></div>
+                            <div class="col-sm-8">@about.NameSurname</div>
+                        </div>
+
+                        @if (contact != null)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(contact.Email))
+                            {
+                                <div class="row mt-3">
+                                    <div class="col-sm-4"><strong class="text-uppercase text-primary">Email:</strong></div>
+                                    <div class="col-sm-8"><a href="mailto:@contact.Email">@contact.Email</a></div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(contact.PhoneNumber))
+                            {
+                                <div class="row mt-3">
+                                    <div class="col-sm-4"><strong class="text-uppercase text-primary">Telefon:</strong></div>
+                                    <div class="col-sm-8">@contact.PhoneNumber</div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(contact.Address))
+                            {
+                                <div class="row mt-3">
+                                    <div class="col-sm-4"><strong class="text-uppercase text-primary">Adres:</strong></div>
+                                    <div class="col-sm-8">@contact.Address</div>
+                                </div>
+                            }
+                        }
+
+                        <div class="mt-4">
+                            <a href="#contact" class="btn btn-primary">İletişime Geç</a>
+                            <a href="/Default/DownloadCv" class="btn btn-outline-primary ms-2">CV İndir (PDF)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="section-title h2 text-center mb-8">
+                <h2 class="mb-0">Hakkımda</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center text-muted py-5">
+                    <p>Aksaray Üniversitesi Yönetim Bilişim Sistemleri mezunuyum. 4 yıl içerisinde öğrenimimi tamamladım ve 2022 yılında mezun oldum. Kendimi özellikle Sistem Yönetimi tarafında geliştirmek istiyorum. Yazılım dillerini üniversitede bulunduğum süreç içerisinde öğrendim. Yazılım dillerini başlangıç düzeyinde üniversitesi bünyesinde giriş yaptım.</p>
+                    <a href="/Default/DownloadCv" class="btn btn-primary mt-3">CV İndir (PDF)</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

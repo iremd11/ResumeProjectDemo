@@ -1,0 +1,105 @@
+<section id="contact" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-lg-auto">
+
+                <div class="row mb-8">
+                    <div class="col-lg-8 mx-lg-auto text-center">
+                        <div class="section-title h2 mb-3">
+                            <h2 class="mb-0">Bana Yazın</h2>
+                            
+                        </div>
+                        <p class="lead text-muted">Merhaba demek veya benimle iletişime geçmek ister misiniz? Bana ulaşın, en kısa sürede size dönüş yapacağım.</p>
+                    </div>
+                </div>
+
+                <div class="row mb-8">
+                    <div class="col-md-4 mb-5 mb-md-0">
+                        <div class="feature-block rounded shadow-sm p-4 h-100 border">
+                            <div class="feature-icon text-primary mb-3">
+                                <div class="mx-auto"><i class="ti-mobile"></i></div>
+                            </div>
+                            <h6 class="text-center text-uppercase small text-muted mb-2">Telefon</h6>
+                            <p class="text-center mb-0">
+                                (0531) 698 07 25
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5 mb-md-0">
+                        <div class="feature-block rounded shadow-sm p-4 h-100 border">
+                            <div class="feature-icon text-primary mb-3">
+                                <div class="mx-auto"><i class="ti-location-pin"></i></div>
+                            </div>
+                            <h6 class="text-center text-uppercase small text-muted mb-2">Adres</h6>
+                            <p class="text-center mb-0">
+                                Osmangazi<br />Bursa, Türkiye
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-block rounded shadow-sm p-4 h-100 border">
+                            <div class="feature-icon text-primary mb-3">
+                                <div class="mx-auto"><i class="ti-email"></i></div>
+                            </div>
+                            <h6 class="text-center text-uppercase small text-muted mb-2">E-posta</h6>
+                            <p class="text-center mb-0">
+                                <a href="mailto:haticeiremdemir9@gmail.com" class="text-dark">haticeiremdemir9@gmail.com</a><br />
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    @if (TempData["MessageSuccess"] != null)
+                    {
+                        <div style="background-color:#d4edda; color:#155724; padding:10px; margin-bottom:15px; border-radius:5px;">
+                            @TempData["MessageSuccess"]
+                        </div>
+                    }
+
+                    <form id="cf" name="cf" asp-controller="Default" asp-action="SendMessage" method="post" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-process"></div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group error-text-white">
+                                    <input type="text" id="cf-name" name="NameSurname" placeholder="Ad Soyad" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group error-text-white">
+                                    <input type="email" id="cf-email" name="EmailAddress" placeholder="E-posta" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group error-text-white">
+                                    <input type="text" id="cf-subject" name="Subject" placeholder="Konu" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <div class="form-group error-text-white">
+                                    <textarea id="cf-message" name="MessageDetail" placeholder="Mesajınız" class="form-control" rows="6"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-none">
+                                <input type="text" id="cf-botcheck" name="cf-botcheck" value="" class="form-control" />
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" id="cf-submit" name="cf-submit" class="btn btn-primary btn-lg px-5 rounded">Gönder</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="contact-form-result text-center"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

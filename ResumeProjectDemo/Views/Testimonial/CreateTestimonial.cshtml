@@ -1,0 +1,52 @@
+@model ResumeProjectDemo.Entities.Testimonial
+@{
+    ViewData["Title"] = "Yeni Referans Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+    <div>
+        <h1 class="text-2xl font-bold text-slate-800 dark:text-white">Yeni Referans Ekle</h1>
+        <p class="text-slate-600 dark:text-slate-300 mt-1">Müşteri veya iş ortağı yorumu ekleyin</p>
+    </div>
+
+    <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-8 max-w-2xl shadow-sm">
+        <form method="post" asp-action="CreateTestimonial">
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Ad Soyad</label>
+                        <input type="text" asp-for="NameSurname" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" required />
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Ünvan / Şirket</label>
+                        <input type="text" asp-for="TitleAndCompany" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" placeholder="Örn: Yazılım Müdürü, ABC Ltd." />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Yorum</label>
+                    <textarea asp-for="CommentDetail" rows="4" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Profil Görsel URL</label>
+                        <input type="text" asp-for="ImageUrl" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" placeholder="/images/avatar.jpg" />
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Arka Plan Görsel URL</label>
+                        <input type="text" asp-for="BackgroundImageUrl" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" placeholder="Referanslar bölümü arka planı" />
+                        <p class="text-xs text-slate-500 mt-1">Genelde tek kayıt için doldurulur</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                    <input asp-for="IsConfirm" type="checkbox" class="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" />
+                    <label asp-for="IsConfirm" class="text-slate-600 dark:text-slate-300 font-medium">Yayında (Onaylı)</label>
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Kaydet</button>
+                    <a href="@Url.Action("Index", "Testimonial")" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">İptal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model List<ResumeProjectDemo.Entities.Service>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="bg-card-dark rounded-xl border border-slate-800 p-6">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-white text-xl font-bold">Hizmetlerim</h3>
+        <a href="/Service/CreateService/" class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors inline-block">
+            + Yeni Hizmet Ekle
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @foreach (var item in Model)
+        {
+            <div class="p-4 border border-slate-800 rounded-lg bg-slate-800/20 flex justify-between items-start">
+                <div>
+                    <h4 class="text-white font-bold text-lg">@item.Title</h4>
+                    <p class="text-slate-400 text-sm mt-1">@item.Description</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <a href="/Service/UpdateService/@item.ServiceId" class="text-primary text-sm hover:underline">Düzenle</a>
+                    <a href="/Service/DeleteService/@item.ServiceId" onclick="return confirm('Silinsin mi?')" class="text-red-400 text-sm hover:underline">Sil</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

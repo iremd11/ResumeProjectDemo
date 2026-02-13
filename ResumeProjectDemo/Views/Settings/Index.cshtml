@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Ayarlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+    <div>
+        <h1 class="text-2xl font-bold text-slate-800 dark:text-white">Ayarlar</h1>
+        <p class="text-slate-600 dark:text-slate-300 mt-1">Sistem ve site ayarlarını yönetin</p>
+    </div>
+
+    <div class="space-y-6 max-w-2xl">
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-6 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">palette</span>
+                Görünüm
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between py-3 border-b border-slate-200 dark:border-slate-700">
+                    <span class="text-slate-600 dark:text-slate-300">Karanlık Mod</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer" />
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </label>
+                </div>
+                <div class="flex items-center justify-between py-3">
+                    <span class="text-slate-600 dark:text-slate-300">Site Başlığı</span>
+                    <input type="text" value="Portfolio" class="w-48 px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:ring-2 focus:ring-primary" />
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-6 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">notifications</span>
+                Bildirimler
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between py-3 border-b border-slate-200 dark:border-slate-700">
+                    <span class="text-slate-600 dark:text-slate-300">Yeni mesaj bildirimi</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer" />
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </label>
+                </div>
+                <div class="flex items-center justify-between py-3">
+                    <span class="text-slate-600 dark:text-slate-300">E-posta bildirimi</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" />
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-6 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">info</span>
+                Sistem Bilgisi
+            </h2>
+            <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <p><span class="font-medium text-slate-700 dark:text-slate-200">Versiyon:</span> 1.0</p>
+                <p><span class="font-medium text-slate-700 dark:text-slate-200">Framework:</span> ASP.NET Core</p>
+                <p><span class="font-medium text-slate-700 dark:text-slate-200">Veritabanı:</span> SQL Server</p>
+            </div>
+        </div>
+
+        <div class="flex gap-3">
+            <button class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Değişiklikleri Kaydet</button>
+            <button class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">İptal</button>
+        </div>
+    </div>
+</div>

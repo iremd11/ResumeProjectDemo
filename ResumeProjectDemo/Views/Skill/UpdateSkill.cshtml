@@ -1,0 +1,32 @@
+@model ResumeProjectDemo.Entities.Skill
+@{
+    ViewData["Title"] = "Yetenek Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+    <div>
+        <h1 class="text-2xl font-bold text-slate-800 dark:text-white">Yetenek Güncelle</h1>
+        <p class="text-slate-600 dark:text-slate-300 mt-1">Yetenek bilgilerini düzenleyin</p>
+    </div>
+
+    <div class="bg-white dark:bg-[#111618] border border-slate-200 dark:border-[#283539] rounded-xl p-8 max-w-xl shadow-sm">
+        <form method="post" asp-action="UpdateSkill">
+            <input type="hidden" asp-for="SkillId" />
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Yetenek Başlığı</label>
+                    <input type="text" asp-for="Title" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" required />
+                </div>
+                <div>
+                    <label class="block text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Başarı Oranı (0-100)</label>
+                    <input type="number" asp-for="Value" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-primary" min="0" max="100" required />
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Güncelle</button>
+                    <a href="@Url.Action("Index", "Skill")" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold py-3 px-6 rounded-lg transition-colors">İptal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

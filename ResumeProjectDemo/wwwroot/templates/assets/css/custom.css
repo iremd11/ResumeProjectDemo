@@ -1,0 +1,145 @@
+/* Place Your Custom Styles Here - Görsel İyileştirmeler */
+
+/* Section spacing */
+.section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* ========== ANA SAYFA KARANLIK TEMA ========== */
+html.main-dark-theme,
+body.main-dark-theme {
+    background-color: #0d1117 !important;
+    color: #e6edf3;
+}
+
+body.main-dark-theme .page-wrapper,
+body.main-dark-theme .page-content {
+    background-color: #0d1117 !important;
+    background: #0d1117 !important;
+    color: #e6edf3;
+}
+
+body.main-dark-theme .section-title h2,
+body.main-dark-theme .section-title .title-letter,
+body.main-dark-theme h1, body.main-dark-theme h2, body.main-dark-theme h3, body.main-dark-theme h4 {
+    color: #e6edf3 !important;
+}
+
+body.main-dark-theme .text-muted {
+    color: #8b949e !important;
+}
+
+body.main-dark-theme #about .about-content,
+body.main-dark-theme #about .col-sm-8 {
+    color: #e6edf3;
+}
+
+body.main-dark-theme #skills {
+    background-color: #161b22 !important;
+    color: #e6edf3;
+}
+
+body.main-dark-theme #skills .text-muted {
+    color: #8b949e !important;
+}
+
+body.main-dark-theme #experience,
+body.main-dark-theme #services,
+body.main-dark-theme #portfolio {
+    background-color: #0d1117;
+    color: #e6edf3;
+}
+
+body.main-dark-theme #contact {
+    background-color: #161b22;
+    color: #e6edf3;
+}
+
+body.main-dark-theme #contact .form-control {
+    background-color: #21262d;
+    border-color: #30363d;
+    color: #e6edf3;
+}
+
+body.main-dark-theme #contact .form-control::placeholder {
+    color: #8b949e;
+}
+
+body.main-dark-theme .bg-dark-theme-card {
+    background-color: #21262d;
+    border-color: #30363d;
+}
+
+body.main-dark-theme .bg-dark-theme-card .card-text,
+body.main-dark-theme .bg-dark-theme-card h6 {
+    color: #e6edf3;
+}
+
+body.main-dark-theme .feature-block {
+    color: #e6edf3;
+}
+
+body.main-dark-theme .feature-block a.text-dark {
+    color: #58a6ff !important;
+}
+
+body.main-dark-theme .site-footer.site-footer-dark {
+    background-color: #0d1117 !important;
+    border-color: #21262d !important;
+}
+
+body.main-dark-theme .site-footer.site-footer-dark .footer-copy {
+    color: #8b949e !important;
+}
+
+/* Footer GitHub simgesi sabit */
+.site-footer .footer-github-wrapper {
+    min-height: 42px;
+}
+
+.site-footer .footer-github-icon {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+body.main-dark-theme #skills.bg-light {
+    background-color: #161b22 !important;
+}
+
+/* Contact cards hover */
+#contact .feature-block {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#contact .feature-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3) !important;
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25) !important;
+}
+
+/* Skill progress bar animation */
+#skills .progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Form input focus styling */
+#contact .form-control {
+    border-radius: 0.375rem;
+}
+#contact .form-control:focus {
+    border-color: #13b6ec;
+    box-shadow: 0 0 0 0.2rem rgba(19, 182, 236, 0.25);
+}
+
+/* Portfolio item hover */
+.portfolio-item:hover .item-overlay {
+    opacity: 0.85;
+}

@@ -1,0 +1,45 @@
+@model List<ResumeProjectDemo.Entities.Testimonial>
+
+<section id="testimonials" class="section">
+    <div class="container">
+        <div class="row mb-8">
+            <div class="col-lg-10 col-xl-8 mx-lg-auto text-center">
+                <div class="section-title h2 mb-3">
+                    <h2 class="mb-0">Referanslar</h2>
+                    
+                </div>
+                <p class="text-muted">Müşterilerimin ve iş ortaklarımın yorumları</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    var imgSrc = string.IsNullOrWhiteSpace(item.ImageUrl) ? "/images/portfolio/default.jpg" : item.ImageUrl;
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 shadow h-100 testimonial-card bg-dark-theme-card">
+                            <div class="card-body p-4">
+                                <p class="card-text fst-italic text-muted mb-4">"@item.CommentDetail"</p>
+                                <div class="d-flex align-items-center">
+                                    <a href="@imgSrc" class="open-popup-link d-block" data-featherlight="image" data-title="@item.NameSurname" data-text="@item.TitleAndCompany">
+                                        <img src="@imgSrc" alt="@item.NameSurname" class="rounded-circle me-3" style="width:50px;height:50px;object-fit:cover; cursor:pointer;">
+                                    </a>
+                                    <div>
+                                        <h6 class="mb-0">@item.NameSurname</h6>
+                                        <small class="text-primary">@item.TitleAndCompany</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center text-muted py-5">Henüz referans eklenmemiş.</div>
+            }
+        </div>
+    </div>
+</section>

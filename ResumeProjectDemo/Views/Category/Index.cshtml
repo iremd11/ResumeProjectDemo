@@ -1,0 +1,39 @@
+@model List<ResumeProjectDemo.Entities.Category>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Kategoriler";
+}
+
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-slate-800 dark:text-white text-xl font-bold">Proje Kategorileri</h3>
+        <a href="@Url.Action("CreateCategory", "Category")" class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors inline-block">
+            + Yeni Kategori Ekle
+        </a>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-left">
+            <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                    <th class="p-4 font-medium">#</th>
+                    <th class="p-4 font-medium">Kategori Adı</th>
+                    <th class="p-4 text-right font-medium">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="border-b border-slate-200 dark:border-slate-700/50">
+                        <td class="p-4 text-slate-800 dark:text-white">@item.CategoryId</td>
+                        <td class="p-4 text-slate-800 dark:text-white font-medium">@item.CategoryName</td>
+                        <td class="p-4 text-right">
+                            <a href="@Url.Action("UpdateCategory", "Category", new { id = item.CategoryId })" class="text-primary hover:underline mr-3">Düzenle</a>
+                            <a href="@Url.Action("DeleteCategory", "Category", new { id = item.CategoryId })" onclick="return confirm('Bu kategori silinsin mi?')" class="text-red-500 hover:underline">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
